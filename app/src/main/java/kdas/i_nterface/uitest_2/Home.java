@@ -17,6 +17,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -47,6 +53,8 @@ public class Home extends AppCompatActivity implements LocationListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener{
 
+    CallbackManager callbackManager;
+
     Thread ref;
     Firebase notif, pinged, pinger;
     String user_num, pinger_num;
@@ -68,112 +76,42 @@ public class Home extends AppCompatActivity implements LocationListener,
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home);
 
         getSupportActionBar().hide();
         mSmallBang = SmallBang.attach2Window(this);
         Firebase.setAndroidContext(this);
 
-        //android.support.v7.widget.Toolbar  toolbar = (android.support.v7.widget.Toolbar ) findViewById(R.id.main2toolbar);
-        //setSupportActionBar(toolbar);
+        callbackManager = CallbackManager.Factory.create();
+        final LoginButton loginButton = (LoginButton)findViewById(R.id.fb);
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d("log", loginResult + "");
+                Toast.makeText(getApplicationContext(), loginResult + "", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+
+
 
 //        if (toolbar != null)
 //            toolbar.setTitle("SOLO");
 //        toolbar.setTitleTextColor(getResources().getColor(R.color.some_white));
 //        setSupportActionBar(toolbar);
         slide_up = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.popup);
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_main_1);
-//        if (fab != null){
-//            fab.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Main2Activity.this, List.class);
-//                    startActivity(i);
-//                }
-//            });
-//        }
-//
-//        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab_main_2);
-//        if (fab2 != null){
-//            fab2.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Main2Activity.this, Main3Activity.class);
-//                    startActivity(i);
-//                }
-//            });
-//        }
-//
-//        FloatingActionButton fab3 = (FloatingActionButton)findViewById(R.id.fab_main_3);
-//        if(fab3 != null){
-//            fab3.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Main2Activity.this, MapsActivity.class);
-//                    startActivity(i);
-//                }
-//            });
-//        }
-//
-//        FloatingActionButton fab4 = (FloatingActionButton)findViewById(R.id.fab_main_4);
-//        if(fab4 != null){
-//            fab4.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Main2Activity.this, Ping.class);
-//                    startActivity(i);
-//                    Log.d("done", "done");
-//                }
-//            });
-//        }else {
-//            Log.d("done", "done2");
-//        }
-//
-//        FloatingActionButton fab5 = (FloatingActionButton)findViewById(R.id.fab_main_5);
-//        if (fab5 != null){
-//            fab5.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Main2Activity.this, Init.class);
-//                    startActivity(i);
-//                }
-//            });
-//        }
-//
-//        FloatingActionButton fab6 = (FloatingActionButton)findViewById(R.id.fab_main_6);
-//        if (fab6 != null){
-//            fab6.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i2 = new Intent(Main2Activity.this, share_location.class);
-//                    startActivity(i2);
-//
-////                    Log.d("2","2");
-//                }
-//            });
-//        }
-//
-//        FloatingActionButton fab_red = (FloatingActionButton)findViewById(R.id.fab_main_7);
-//        if (fab_red != null){
-//            fab_red.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Main2Activity.this, EventTimeline.class);
-//                    startActivity(i);
-//                }
-//            });
-//        }
 
-
-//        fab1 = (FloatingActionButton)findViewById(R.id.fab_init);
-//        fab1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(Main2Activity.this, Init.class);
-//                startActivity(i);
-//
-//            }
-//        });
         fab2 = (CardView) findViewById(R.id.view10);
         fab2.startAnimation(slide_up);
         fab2.setOnClickListener(new View.OnClickListener() {
@@ -257,6 +195,12 @@ public class Home extends AppCompatActivity implements LocationListener,
         new do_stuff().execute("");
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
