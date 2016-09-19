@@ -20,6 +20,9 @@
     <color name="some_accent">#32A9E3</color>
     <color name="some_red">#E65100</color>
     <color name="some_white">#FCFAFA</color>
+    <color name="legacy_primary">#a6a6a6</color>
+    <color name="legacy_primary_dark">#f10074c1</color>
+    <color name="background_dark">#edd2d2d2</color>
     <array name="dot_colors">
         <item>#03A9F4</item>
         <item>#E65100</item>

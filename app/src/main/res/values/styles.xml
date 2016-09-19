@@ -1,6 +1,37 @@
 <resources>
 
     <!-- Base application theme. -->
+    <style name="Transapp" parent="android:Theme.Translucent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorPrimary">@color/legacy_primary</item>
+        <item name="android:colorPrimaryDark">@color/legacy_primary_dark</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+
+    </style>
+    <style name="Translucent" parent="android:Theme.Translucent.NoTitleBar.Fullscreen" >
+        <!-- Customize your theme here. -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorPrimary">@color/legacy_primary</item>
+        <item name="android:colorPrimaryDark">@color/legacy_primary_dark</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+    </style>
+
+    <style name="Transmemories" parent="android:Theme.Translucent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorPrimaryDark">@color/legacy_primary_dark</item>
+        <item name="android:colorPrimary">@color/legacy_primary</item>
+    </style>
+
+
+    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -11,7 +42,7 @@
 
     <style name="AppTheme.LaunchScreen">
         <item name="colorPrimaryDark">#00ffffff</item>
-        <item name="android:windowBackground">@drawable/winback</item>
+
         <item name="windowNoTitle">true</item>
     </style>
 
@@ -25,5 +56,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="transtrial" parent="android:Theme.Translucent" />
 
 </resources>

@@ -1,5 +1,6 @@
 package kdas.i_nterface.uitest_2;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -43,7 +44,7 @@ import br.com.goncalves.pugnotification.notification.PugNotification;
 import xyz.hanks.library.SmallBang;
 import xyz.hanks.library.SmallBangListener;
 
-public class Home extends AppCompatActivity implements LocationListener,
+public class Home extends Activity implements LocationListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener{
 
@@ -70,7 +71,7 @@ public class Home extends AppCompatActivity implements LocationListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         mSmallBang = SmallBang.attach2Window(this);
         Firebase.setAndroidContext(this);
 
