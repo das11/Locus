@@ -64,7 +64,7 @@ public class Init extends AppCompatActivity {
                     notif.setValue("false");
 
                     data = user.child("data");
-                    for (int i = 245; i < 260; ++i){
+                    for (int i = 245; i < 365; ++i){
                         day = data.child(i + "");
 
                         gist_note = day.child("gist_note");
