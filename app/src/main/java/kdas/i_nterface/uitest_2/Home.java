@@ -57,7 +57,7 @@ public class Home extends Activity implements LocationListener,
     boolean init = false;
     boolean chk_ping_once = false;
 
-    CardView fab2, fab3, fab4, fab_route_ping;
+    CardView fab2, fab3, fab4, fab_route_ping, fab5;
 
     Animation slide_up;
     SmallBang mSmallBang;
@@ -234,6 +234,15 @@ public class Home extends Activity implements LocationListener,
                     }
                 });
 
+            }
+        });
+
+        fab5 = (CardView) findViewById(R.id.view14);
+        fab5.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Home.this, Memories.class);
+                startActivity(i);
             }
         });
 

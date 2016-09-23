@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="kdas.i_nterface.uitest_2.Meetnow">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/toolbarmeetContacts"
+        android:background="@color/legacy_primary"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/tabselectormeet"
+        android:layout_below="@+id/toolbarmeetContacts"
+        android:layout_centerHorizontal="true"
+        android:nestedScrollingEnabled="false"
+        app:tabMode="fixed"
+        app:tabGravity="fill"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tabselectormeet"
+        android:id="@+id/meetslidecontacts"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>
