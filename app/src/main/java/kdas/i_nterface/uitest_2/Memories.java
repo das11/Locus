@@ -3,12 +3,8 @@ package kdas.i_nterface.uitest_2;
 //Link the memories button to this page, then intitally itself it should fetch
 // the calander view based on the tab and not inside the day
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
